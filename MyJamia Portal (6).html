@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJamia Official Portal - Jamia Millia Islamia</title>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Reset & Base Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        :root {
+            --primary-dark: #123510;
+            --primary: #1a4314;
+            --primary-hover: #265d1f;
+            --accent-gold: #d4af37;
+            --bg-light: #f4f6f9;
+            --card-border: #cbd5e1;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --alert-bg: #d9534f;
+            --blue-accent: #2563eb;
+            --success-green: #16a34a;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Top Notice Banner */
+        .top-alert {
+            background-color: var(--alert-bg);
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-alert a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        /* Utility Header Bar */
+        .utility-bar {
+            background-color: var(--primary-dark);
+            color: #d1d5db;
+            padding: 6px 15px;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .utility-left {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Main Branding Header */
+        .brand-header {
+            background-color: #ffffff;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 55px;
+            height: 55px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        .logo-circle .jmi-txt {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-circle .star-txt {
+            color: var(--accent-gold);
+            font-size: 9px;
+            margin-top: -2px;
+        }
+
+        .brand-info h1 {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .brand-info p {
+            color: var(--text-muted);
+            font-size: 11.5px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .portal-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            width: 100%;
+        }
+
+        .nav-links li a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 14px;
+            color: #ffffff;
+            font-size: 12.5px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background-color: var(--primary-hover);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        /* Ticker Bar */
+        .ticker-wrapper {
+            background-color: #fff9e6;
+            border-bottom: 1px solid #ffeeba;
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .ticker-label {
+            background-color: var(--primary);
+            color: white;
+            padding: 3px 8px;
+            font-weight: 700;
+            font-size: 10px;
+            border-radius: 3px;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            flex: 1;
+            overflow: hidden;
+            color: #856404;
+        }
+
+        /* Main Layout */
+        .main-wrapper {
+            max-width: 1240px;
+            margin: 15px auto;
+            padding: 0 10px;
+            display: grid;
+            grid-template-columns: 2.1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Generic Card */
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--primary);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 12px 15px;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #fcfdfe;
+        }
+
+        .card-header i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .card-header h2 {
+            font-size: 14.5px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        /* Distance Fee Portal Specific Tabs */
+        .fee-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 15px;
+        }
+
+        .fee-tab-btn {
+            padding: 8px 14px;
+            font-weight: 700;
+            font-size: 13px;
+            color: #64748b;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+            flex: 1;
+            text-align: center;
+        }
+
+        .fee-tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Form Layout */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group label span {
+            color: #ef4444;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 13px;
+            transition: all 0.2s;
+            background-color: #fff;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 67, 20, 0.12);
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 9px 18px;
+            border: none;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: #0284c7;
+            color: white;
+            padding: 9px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0369a1;
+        }
+
+        .btn-deposit {
+            background-color: #16a34a;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: background 0.2s;
+        }
+
+        .btn-deposit:hover {
+            background-color: #15803d;
+        }
+
+        /* Student Search Feature Box */
+        .search-box-container {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+
+        .search-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Dynamic Table & Card View for Mobile */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            text-align: left;
+        }
+
+        .student-table th {
+            background-color: #1a4314;
+            color: white;
+            padding: 8px 10px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .student-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+
+        .student-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .badge-due {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 10.5px;
+            display: inline-block;
+        }
+
+        .badge-paid {
+            background-color: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 10.5px;
+            display: inline-block;
+        }
+
+        /* Mobile Responsive Card Layout for Student List */
+        .student-card-list {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .student-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        .student-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+        }
+
+        .student-card-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 13.5px;
+        }
+
+        .student-card-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .student-card-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .student-card-label {
+            color: #64748b;
+            font-size: 10.5px;
+            font-weight: 600;
+        }
+
+        .student-card-val {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .student-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 6px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* Modal Overlay & Card */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        /* Payment Gateway Option Styling */
+        .upi-container {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .upi-id-box {
+            background: #ffffff;
+            border: 1px dashed var(--primary);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            display: inline-block;
+            margin: 6px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .qr-frame {
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            display: inline-block;
+            margin: 8px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .upi-app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .upi-app-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .upi-app-btn:hover {
+            border-color: var(--primary);
+            background-color: #f1f5f9;
+        }
+
+        /* Right Sidebar Links */
+        .sidebar-links {
+            list-style: none;
+        }
+
+        .sidebar-links li {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px 8px;
+            color: #334155;
+            font-size: 12.5px;
+            font-weight: 500;
+        }
+
+        .sidebar-links a i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 13px;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: #9ca3af;
+            padding: 25px 15px 15px;
+            margin-top: 30px;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .footer-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            padding-bottom: 6px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .footer-copyright {
+            max-width: 1240px;
+            margin: 15px auto 0;
+            text-align: center;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        /* Responsive Mobile Breakpoints */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .portal-badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .table-responsive {
+                display: none; /* Hide wide table on mobile screens */
+            }
+
+            .student-card-list {
+                display: flex; /* Show stacked mobile cards */
+            }
+
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Alert Top Banner -->
+    <div class="top-alert" id="topAlert">
+        <span><i class="fa-solid fa-triangle-exclamation"></i> MyJamia Official Portal Fee Deposit Window Active (2026-27).</span>
+        <span class="close-btn" onclick="document.getElementById('topAlert').style.display='none'">&times;</span>
+    </div>
+
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="utility-left">
+            <span><i class="fa-solid fa-phone"></i> +91-11-26981717</span>
+            <span><i class="fa-solid fa-envelope"></i> help@mj.jmi.ac.in</span>
+        </div>
+        <div>
+            <span>Language: <strong>EN | HI</strong></span>
+        </div>
+    </div>
+
+    <!-- Header Branding -->
+    <header class="brand-header">
+        <div class="logo-group">
+            <div class="logo-circle">
+                <span class="jmi-txt">JMI</span>
+                <span class="star-txt">★ ★ ★</span>
+            </div>
+            <div class="brand-info">
+                <h1>Jamia Millia Islamia</h1>
+                <p>MyJamia Official Portal</p>
+            </div>
+        </div>
+        <div class="portal-badge">
+            <i class="fa-solid fa-wallet"></i> MyJamia Portal
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#" class="active"><i class="fa-solid fa-credit-card"></i> Fee Payment</a></li>
+                <li><a href="#"><i class="fa-solid fa-download"></i> Terms</a></li>
+                <li><a href="#"><i class="fa-solid fa-headset"></i> Helpdesk</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- News Ticker -->
+    <div class="ticker-wrapper">
+        <div class="ticker-label">NOTICE</div>
+        <div class="ticker-content">
+            <marquee behavior="scroll" direction="left" scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();">
+                Select your name below to deposit fee online via UPI, Debit Card, Net Banking or QR Code.
+            </marquee>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="main-wrapper">
+        
+        <main>
+            <!-- Distance Controller Fee Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <h2>Online Fee Payment & Deposit System</h2>
+                </div>
+                <div class="card-body">
+                    
+                    <!-- Fee Tabs -->
+                    <div class="fee-tabs">
+                        <button class="fee-tab-btn active" onclick="switchTab('makePayment', this)">Make Payment</button>
+                        <button class="fee-tab-btn" onclick="switchTab('downloadReceipt', this)">Download Receipt</button>
+                    </div>
+
+                    <!-- TAB 1: MAKE PAYMENT -->
+                    <div id="makePayment" class="tab-panel active">
+                        <form id="feePaymentForm" onsubmit="handleFeePayment(event)">
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="feeType">Fee Type <span>*</span></label>
+                                    <select id="feeType" class="form-select" required>
+                                        <option value="">-- Choose Category --</option>
+                                        <option value="new_admission">New Admission Fee</option>
+                                        <option value="readmission">Readmission Fee</option>
+                                        <option value="exam_fee">Distance Exam Fee</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="receiptId">Receipt Id / Ref No <span>*</span></label>
+                                    <input type="text" id="receiptId" class="form-input" placeholder="e.g. REC2026101" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <button type="button" class="btn-secondary" onclick="openModal('receiptModal')">
+                                        <i class="fa-solid fa-magnifying-glass"></i> Find Receipt No.
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="btn-container">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fa-solid fa-shield-halved"></i> Proceed to Pay Online
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- TAB 2: DOWNLOAD RECEIPT -->
+                    <div id="downloadReceipt" class="tab-panel">
+                        <form onsubmit="handleReceiptDownload(event)">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="recEmail">Registered Email <span>*</span></label>
+                                    <input type="email" id="recEmail" class="form-input" placeholder="student@gmail.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recId">Receipt Id <span>*</span></label>
+                                    <input type="text" id="recId" class="form-input" placeholder="Receipt Number" required>
+                                </div>
+                            </div>
+                            <div class="btn-container">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fa-solid fa-print"></i> Download Receipt PDF
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SEARCH & DEPOSIT FEE DIRECTLY BY STUDENT NAME -->
+                    <div class="search-box-container">
+                        <div class="search-box-title">
+                            <i class="fa-solid fa-users-viewfinder" style="color: var(--primary);"></i>
+                            Student Search & Online Fee Deposit Portal
+                        </div>
+                        <p style="font-size: 11.5px; color: #64748b; margin-bottom: 10px;">
+                            Search your name or Father's Name and click <strong>"Deposit Fee"</strong> to pay immediately:
+                        </p>
+
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <input type="text" id="studentSearchQuery" class="form-input" onkeyup="filterStudents()" placeholder="Search by Student Name, Father's Name, Course...">
+                        </div>
+
+                        <!-- 1. Desktop Table View -->
+                        <div class="table-responsive">
+                            <table class="student-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Father's Name</th>
+                                        <th>Course</th>
+                                        <th>Fee Type</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentTableBody">
+                                    <!-- Dynamic rows loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 2. Mobile Responsive Stacked Card View -->
+                        <div class="student-card-list" id="studentCardList">
+                            <!-- Mobile Cards Loaded via JS -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar Links -->
+        <aside>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <h2>MyJamia Fee Help & Guidance</h2>
+                </div>
+                <div class="card-body" style="padding: 8px 12px;">
+                    <ul class="sidebar-links">
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Online Payment Instructions</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Refund/Cancellation Policy</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Duplicate Deduction Helpline</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- MODAL 1: FIND RECEIPT NO -->
+    <div class="modal-overlay" id="receiptModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('receiptModal')">&times;</span>
+            <h3 style="color: var(--primary); font-size: 15px; margin-bottom: 12px;">
+                <i class="fa-solid fa-magnifying-glass"></i> Find Receipt No.
+            </h3>
+            
+            <form onsubmit="handleFindReceiptSubmit(event)">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label>Fee Category</label>
+                    <select class="form-select">
+                        <option>New Admission</option>
+                        <option>Readmission</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label>Registered Email Id <span>*</span></label>
+                    <input type="email" id="lookupEmail" class="form-input" placeholder="e.g. mohd.ali@gmail.com" required>
+                </div>
+                <button type="submit" class="btn-primary">
+                    Search Receipt ID
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: DIRECT STUDENT FEE DEPOSIT MODAL -->
+    <div class="modal-overlay" id="depositModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('depositModal')">&times;</span>
+            <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-credit-card"></i> Pay Fee Online via CCAvenue UPI
+            </h3>
+            
+            <div style="background-color: #f1f5f9; padding: 10px; border-radius: 6px; font-size: 12px; margin-bottom: 12px;">
+                <p><strong>Student:</strong> <span id="depStudentName">-</span></p>
+                <p><strong>Father's Name:</strong> <span id="depFatherName">-</span></p>
+                <p><strong>Course:</strong> <span id="depCourse">-</span></p>
+                <p><strong>Receipt ID:</strong> <span id="depReceiptId">-</span></p>
+                <p style="font-size: 13px; color: var(--primary); margin-top: 4px;"><strong>Fee Payable:</strong> <span id="depFeeAmount" style="font-size: 15px; font-weight: 800;">-</span></p>
+            </div>
+
+            <form onsubmit="executeFeeDeposit(event)">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label>Payment Method <span>*</span></label>
+    <!-- MODAL 3: SUCCESSFUL PAYMENT & PRINTABLE PDF RECEIPT MODAL -->
+    <div class="modal-overlay" id="receiptSuccessModal">
+        <div class="modal-content" style="max-width: 550px;">
+            <span class="modal-close" onclick="closeModal('receiptSuccessModal')">&times;</span>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <i class="fa-solid fa-circle-check" style="font-size: 45px; color: #16a34a;"></i>
+                <h2 style="color: #16a34a; font-size: 18px; margin-top: 5px;">Fee Successfully Deposited!</h2>
+                <p style="font-size: 12px; color: #64748b;">Your online fee payment has been confirmed by MyJamia Portal.</p>
+            </div>
+
+            <div id="printableReceiptArea" style="background: #ffffff; border: 2px dashed #1a4314; padding: 15px; border-radius: 6px; font-size: 12px; color: #1e293b; margin-bottom: 15px;">
+                <div style="text-align: center; border-bottom: 1px solid #cbd5e1; padding-bottom: 8px; margin-bottom: 10px;">
+                    <h3 style="color: #1a4314; font-size: 16px; font-weight: 800; text-transform: uppercase;">Jamia Millia Islamia</h3>
+                    <p style="font-size: 11px; color: #475569; font-weight: 600;">MyJamia Official Portal - Online Fee Receipt</p>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+                    <div><strong>Receipt ID:</strong> <span id="succReceiptId">-</span></div>
+                    <div><strong>Transaction Ref:</strong> <span id="succTxnRef">-</span></div>
+                    <div><strong>Date & Time:</strong> <span id="succDateTime">-</span></div>
+                    <div><strong>Payment Mode:</strong> <span id="succPayMode">-</span></div>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 8px 0;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div><strong>Student Name:</strong> <span id="succStudentName">-</span></div>
+                    <div><strong>Father's Name:</strong> <span id="succFatherName">-</span></div>
+                    <div><strong>Course:</strong> <span id="succCourse">-</span></div>
+                    <div style="margin-top: 5px; background: #f0fdf4; padding: 6px; border-radius: 4px; border: 1px solid #bbf7d0;">
+                        <strong style="color: #16a34a; font-size: 14px;">Amount Deposited: <span id="succAmount">-</span></strong>
+                    </div>
+                </div>
+                <div style="margin-top: 12px; font-size: 10px; color: #94a3b8; text-align: center;">
+                    This is a computer-generated official receipt issued by MyJamia Portal. No signature required.
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn-primary" style="background-color: #0284c7;" onclick="downloadReceiptPDF()">
+                    <i class="fa-solid fa-file-pdf"></i> Download Receipt PDF
+                </button>
+                <button type="button" class="btn-primary" style="background-color: #64748b;" onclick="closeModal('receiptSuccessModal')">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>MyJamia Official Portal</h3>
+                <p style="font-size: 12px;">Official online fee payment and student portal for Jamia Millia Islamia, New Delhi.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Technical Support</h3>
+                <p style="font-size: 12px;">FTK-Centre for Information Technology (CIT)</p>
+                <p style="font-size: 12px;">Email: <strong>cit@jmi.ac.in</strong></p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 Jamia Millia Islamia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Updated Student Database including Anam Saifi
+        let studentsDatabase = [
+            { 
+                id: "REC2026100", 
+                name: "Anam Saifi", 
+                fatherName: "Mr Naeem Saifi", 
+                course: "B.A.(Hons) (Sociology) | B.A.(Hons) (Psychology) | B.A./B.Sc.(Hons) (Geography) | B.A.(Hons) (Social Work)", 
+                dob: "05/06/2003", 
+                feeType: "Admission & Course Fee", 
+                fee: "₹ 17,400", 
+                status: "Due" 
+            },
+            { id: "REC2026101", name: "Mohd Ali Khan", fatherName: "Tariq Khan", course: "B.A. (Distance)", dob: "12/05/2002", feeType: "Readmission Fee", fee: "₹ 7,200", status: "Due" },
+            { id: "REC2026102", name: "Ayesha Anjum", fatherName: "Abdul Rahim", course: "M.A. English (CDOE)", dob: "24/08/2001", feeType: "New Admission", fee: "₹ 10,500", status: "Paid" },
+            { id: "REC2026103", name: "Rahul Sharma", fatherName: "Suresh Sharma", course: "B.Com (Distance)", dob: "15/11/2003", feeType: "Readmission Fee", fee: "₹ 8,000", status: "Due" },
+            { id: "REC2026104", name: "Zaid Ahmad", fatherName: "Nasir Ahmad", course: "MBA (Distance)", dob: "03/02/2000", feeType: "New Admission", fee: "₹ 25,000", status: "Paid" },
+            { id: "REC2026105", name: "Fatima Bi", fatherName: "Anwar Hussain", course: "M.A. History (CDOE)", dob: "19/09/2002", feeType: "Readmission Fee", fee: "₹ 9,400", status: "Due" },
+            { id: "REC2026106", name: "Imran Raza", fatherName: "Ghulam Raza", course: "B.B.A (CDOE)", dob: "11/04/2002", feeType: "Exam Fee", fee: "₹ 3,500", status: "Due" }
+        ];
+
+        let selectedStudentForPayment = null;
+        let lastSuccessfulTransaction = null;
+
+        // Switch Tabs
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.querySelectorAll('.fee-tab-btn').forEach(b => b.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // Render Student Search (Desktop Table & Mobile Responsive Cards)
+        function renderStudents(data) {
+            const tbody = document.getElementById('studentTableBody');
+            const cardList = document.getElementById('studentCardList');
+            
+            tbody.innerHTML = '';
+            cardList.innerHTML = '';
+
+            if(data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#94a3b8; padding: 15px;">No matching student record found.</td></tr>`;
+                cardList.innerHTML = `<div style="text-align:center; color:#94a3b8; padding: 15px;">No matching student record found.</div>`;
+                return;
+            }
+
+            data.forEach(student => {
+                const badgeClass = student.status === 'Paid' ? 'badge-paid' : 'badge-due';
+                
+                // Action Button Render
+                let actionBtnHTML = '';
+                if(student.status === 'Due') {
+                    actionBtnHTML = `
+                        <button class="btn-deposit" onclick="openDepositModal('${student.id}')">
+                            <i class="fa-solid fa-wallet"></i> Deposit Fee
+                        </button>
+                    `;
+                } else {
+                    actionBtnHTML = `
+                        <button style="background:#0284c7; color:#fff; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-size:11px;"
+                                onclick="alert('Fee Receipt for ${student.name} downloaded successfully!')">
+                            <i class="fa-solid fa-download"></i> Receipt
+                        </button>
+                    `;
+                }
+
+                // 1. Desktop Row
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${student.name}</strong></td>
+                    <td>${student.fatherName}</td>
+                    <td>${student.course}</td>
+                    <td>${student.feeType}</td>
+                    <td><strong>${student.fee}</strong></td>
+                    <td><span class="${badgeClass}">${student.status}</span></td>
+                    <td>${actionBtnHTML}</td>
+                `;
+                tbody.appendChild(tr);
+
+                // 2. Mobile Responsive Card
+                const card = document.createElement('div');
+                card.className = 'student-card';
+                card.innerHTML = `
+                    <div class="student-card-header">
+                        <span class="student-card-title">${student.name}</span>
+                        <span class="${badgeClass}">${student.status}</span>
+                    </div>
+                    <div class="student-card-body">
+                        <div class="student-card-field">
+                            <span class="student-card-label">Father's Name</span>
+                            <span class="student-card-val">${student.fatherName}</span>
+                        </div>
+                        <div class="student-card-field">
+                            <span class="student-card-label">Course</span>
+                            <span class="student-card-val">${student.course}</span>
+                        </div>
+                        <div class="student-card-field">
+                            <span class="student-card-label">Fee Type</span>
+                            <span class="student-card-val">${student.feeType}</span>
+                        </div>
+                        <div class="student-card-field">
+                            <span class="student-card-label">Payable Amount</span>
+                            <span class="student-card-val" style="color:var(--primary); font-weight:800;">${student.fee}</span>
+                        </div>
+                    </div>
+                    <div class="student-card-footer">
+                        <div><span class="student-card-label">Receipt ID:</span> <strong>${student.id}</strong></div>
+                        <div>${actionBtnHTML}</div>
+                    </div>
+                `;
+                cardList.appendChild(card);
+            });
+        }
+
+        // Live Filter Functionality for Search Input
+        function filterStudents() {
+            const query = document.getElementById('studentSearchQuery').value.toLowerCase().trim();
+            const filtered = studentsDatabase.filter(s => 
+                s.name.toLowerCase().includes(query) ||
+                s.fatherName.toLowerCase().includes(query) ||
+                s.course.toLowerCase().includes(query) ||
+                s.id.toLowerCase().includes(query)
+            );
+            renderStudents(filtered);
+        }
+
+        // Open Deposit Modal for Specific Student
+        function openDepositModal(studentId) {
+            const student = studentsDatabase.find(s => s.id === studentId);
+            if(!student) return;
+
+            selectedStudentForPayment = student;
+            
+            document.getElementById('depStudentName').innerText = student.name;
+            document.getElementById('depFatherName').innerText = student.fatherName;
+            document.getElementById('depCourse').innerText = student.course;
+            document.getElementById('depReceiptId').innerText = student.id;
+            document.getElementById('depFeeAmount').innerText = student.fee;
+
+            // Generate Dynamic UPI Deep Links & QR targeting md.ahteshamul.jmi.ac@okicici
+            const cleanAmount = student.fee.replace(/[^0-9]/g, '');
+            const upiVpa = "md.ahteshamul.jmi.ac@okicici";
+            const upiName = "MyJamia Fee Portal";
+            const upiUrl = `upi://pay?pa=${upiVpa}&pn=${encodeURIComponent(upiName)}&am=${cleanAmount}&cu=INR&tn=${student.id}`;
+
+            document.getElementById('activeUpiVpa').innerText = upiVpa;
+            
+            // Set dynamic QR code URL
+            document.getElementById('qrCodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(upiUrl)}`;
+
+            // Set app links
+            document.getElementById('gpayBtn').href = upiUrl;
+            document.getElementById('phonepeBtn').href = upiUrl;
+            document.getElementById('paytmBtn').href = upiUrl;
+            document.getElementById('bhimBtn').href = upiUrl;
+
+            openModal('depositModal');
+        }
+
+        // Printable PDF Download Trigger
+        function downloadReceiptPDF() {
+            if(!lastSuccessfulTransaction) return;
+
+            const printWin = window.open('', '', 'width=700,height=600');
+            printWin.document.write(`
+                <html>
+                <head>
+                    <title>Fee Receipt - MyJamia Portal</title>
+                    <style>
+                        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+                        .receipt-box { border: 2px solid #1a4314; padding: 20px; border-radius: 8px; }
+                        .header { text-align: center; border-bottom: 2px solid #1a4314; padding-bottom: 10px; margin-bottom: 15px; }
+                        .header h2 { margin: 0; color: #1a4314; }
+                        .field { margin-bottom: 8px; font-size: 14px; }
+                        .footer { margin-top: 20px; font-size: 11px; text-align: center; color: #666; }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt-box">
+                        <div class="header">
+                            <h2>JAMIA MILLIA ISLAMIA</h2>
+                            <p><strong>MyJamia Official Fee Receipt</strong></p>
+                        </div>
+                        <div class="field"><strong>Receipt ID:</strong> ${lastSuccessfulTransaction.receiptId}</div>
+                        <div class="field"><strong>Transaction Ref:</strong> ${lastSuccessfulTransaction.txnRef}</div>
+                        <div class="field"><strong>Date & Time:</strong> ${lastSuccessfulTransaction.dateTime}</div>
+                        <div class="field"><strong>Student Name:</strong> ${lastSuccessfulTransaction.studentName}</div>
+                        <div class="field"><strong>Father's Name:</strong> ${lastSuccessfulTransaction.fatherName}</div>
+                        <div class="field"><strong>Course:</strong> ${lastSuccessfulTransaction.course}</div>
+                        <div class="field"><strong>Payment Gateway:</strong> ${lastSuccessfulTransaction.payMode}</div>
+                        <div class="field" style="font-size: 16px; font-weight: bold; color: #16a34a; margin-top: 10px;">
+                            Fee Amount Paid: ${lastSuccessfulTransaction.amount} (SUCCESSFUL)
+                        </div>
+                        <div class="footer">
+                            Computer-generated document from MyJamia Official Portal. No signature required.
+                        </div>
+                    </div>
+                    <script>
+                        window.onload = function() { window.print(); window.close(); };
+                    <\/script>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+        }
+
+        // Generic Modal Helpers
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function handleFindReceiptSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('lookupEmail').value;
+            alert("Receipt ID searched for " + email + ". Details sent to your inbox!");
+            closeModal('receiptModal');
+        }
+
+        function handleFeePayment(e) {
+            e.preventDefault();
+            const recId = document.getElementById('receiptId').value;
+            const student = studentsDatabase.find(s => s.id.toLowerCase() === recId.toLowerCase());
+            
+            if(student) {
+                openDepositModal(student.id);
+            } else {
+                alert("Redirecting to JMI Gateway for Receipt ID: " + recId);
+            }
+        }
+
+        function handleReceiptDownload(e) {
+            e.preventDefault();
+            alert("Generating & downloading official fee receipt PDF...");
+        }
+
+        // Initialize Student List on Page Load
+        window.onload = function() {
+            renderStudents(studentsDatabase);
+        };
+    </script>
+</body>
+</html>
